@@ -159,6 +159,13 @@ public class AddNewShopActivity extends ActionBarActivity {
                 dialog.dismiss();
             }
         });
+        objBuilder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        objBuilder.show();
     }
 
     private void addShopToMySQL() {
