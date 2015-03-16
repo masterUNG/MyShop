@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Icon"
+            android:text="Type Shop"
             android:id="@+id/textView4"
             android:textSize="@dimen/h2"
             android:textStyle="bold"

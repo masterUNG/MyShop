@@ -141,9 +141,29 @@ public class AddNewShopActivity extends ActionBarActivity {
 
         } else {
 
+            confirmSaveShop();
+
         }   // if
 
     }   // clickSaveShop
+
+    private void confirmSaveShop() {
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(intShowIcon);
+        objBuilder.setTitle(strNameShop);
+        objBuilder.setMessage(strDetail + "\n" + "Block = " + strBlock + "\n" + "Floor = " + strFloor);
+        objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                addShopToMySQL();
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private void addShopToMySQL() {
+
+    }
 
 
     @Override
