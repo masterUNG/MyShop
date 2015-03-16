@@ -76,6 +76,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="clickSaveShop"
             android:text="Save Shop"
             android:id="@+id/button4"
             android:layout_alignParentBottom="true" />
