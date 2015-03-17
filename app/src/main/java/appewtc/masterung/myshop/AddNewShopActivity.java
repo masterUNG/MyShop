@@ -2,8 +2,11 @@ package appewtc.masterung.myshop;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +15,15 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
 
 
 public class AddNewShopActivity extends ActionBarActivity {
@@ -170,7 +182,35 @@ public class AddNewShopActivity extends ActionBarActivity {
 
     private void addShopToMySQL() {
 
-    }
+        //setup Policy
+        if (Build.VERSION.SDK_INT > 9) {
+
+            StrictMode.ThreadPolicy objPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(objPolicy);
+
+        }   // if
+
+        //Add Value to mySQL
+        try {
+
+            ArrayList<NameValuePair> objNameValuePairs = new ArrayList<NameValuePair>();
+            objNameValuePairs.add(new BasicNameValuePair("isAdd", "true"));
+            objNameValuePairs.add(new BasicNameValuePair("Shop", strNameShop));
+            objNameValuePairs.add(new BasicNameValuePair("Detail", strDetail));
+            objNameValuePairs.add(new BasicNameValuePair("Block", strBlock));
+            objNameValuePairs.add(new BasicNameValuePair("Floor", strFloor));
+            objNameValuePairs.add(new BasicNameValuePair("Icon", Integer.toString(intShowIcon)));
+
+            HttpClient objHttpClient = new DefaultHttpClient();
+            HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/shop/add_data_master.php");
+            objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
+            objHttpClient.execute(objHttpPost);
+
+        } catch (Exception e) {
+            Log.d("shop", "Add Value to mySQL ==> " + e.toString());
+        }
+
+    }   // addShopToMySQL
 
 
     @Override
