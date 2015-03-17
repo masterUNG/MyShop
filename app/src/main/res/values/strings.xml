@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_new_shop">AddNewShopActivity</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_list_all_shop">ListAllShopActivity</string>
 </resources>

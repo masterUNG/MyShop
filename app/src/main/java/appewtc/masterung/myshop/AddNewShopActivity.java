@@ -33,7 +33,7 @@ public class AddNewShopActivity extends ActionBarActivity {
     private Spinner floorSpinner;
     private ImageView imvIcon;
     private String strNameShop, strDetail, strBlock, strFloor, strIcon;
-    private int intShowIcon;
+    private int intShowIcon = R.drawable.build1;
 
 
     @Override
